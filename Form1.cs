@@ -28,7 +28,7 @@ namespace mcramcalc
 
         private void calculate_Click(object sender, EventArgs e)
         {
-            //if (serverRamBox.Text == "" || versionBox.SelectedIndex > -1 || pluginsBox.SelectedIndex > -1 || playersBox.SelectedIndex > -1) { MessageBox.Show("complete the form before calculating.");  return; }
+            if (serverRamBox.Text == "" || versionBox.SelectedIndex < -1 || pluginsBox.SelectedIndex < -1 || playersBox.SelectedIndex < -1) { MessageBox.Show("complete the form before calculating.");  return; }
             serverRam = Int32.Parse(serverRamBox.Text);
             checkVersionLevel();
             pluginLevelCheck();
