@@ -54,9 +54,9 @@ namespace mcramcalc
             this.MinimumSize = new Size(816, 250);
 
             optimizedSettingsLabel.Text =
-                "Version : "+ versionBox.SelectedValue + " | " + serverEngine + " | " + versionEstimatedRam +
-                "\nPlugins Count : " + pluginsBox.SelectedValue + " | " + pluginsEstimatedRam +
-                "\nPlayer Count : " + playersBox.SelectedValue + " | " + playerEstimatedRam +
+                "Version : "+ versionBox.Text+ " | " + serverEngine + " | " + versionEstimatedRam +
+                "\nPlugins Count : " + pluginsBox.Text + " | " + pluginsEstimatedRam +
+                "\nPlayer Count : " + playersBox.Text + " | " + playerEstimatedRam +
 
                 "\n\nis World Pregenerated : " + iwp +
                 "\nis World Small : " + iws +
