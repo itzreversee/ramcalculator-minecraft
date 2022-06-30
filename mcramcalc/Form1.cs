@@ -62,7 +62,7 @@ namespace mcramcalc
                 "\nis World Small : " + iws +
 
                 "\n\n Recomended Minecraft Server RAM : " +serverEstimatedRam + " MB" + 
-                "\n Recomended Cord RAM : " + bungeeEstimatedRam + " MB" +
+                "\n Recomended Proxy RAM : " + bungeeEstimatedRam + " MB" +
 
                 "\n\nRecomended Server OS : " + rso;
         }
@@ -85,9 +85,12 @@ namespace mcramcalc
         void getServerRam()
         {
             // server version ram and engine
-            if (serverVersionLevel == 0 || serverVersionLevel == 1) { versionEstimatedRam = 1024; serverEngine = "CraftBukkit or Spigot"; }
-            else if ( serverVersionLevel == 2 ) { versionEstimatedRam = 2048; serverEngine = "Spigot"; }
-            else if ( serverVersionLevel == 3 || serverVersionLevel == 4) { versionEstimatedRam = 2048; serverEngine = "PaperMC"; }
+            if (serverVersionLevel == 0) { versionEstimatedRam = 1024; serverEngine = "Spigot (Unknown Version!)"; }
+            else if ( serverVersionLevel == 1 ) { versionEstimatedRam = 1024; serverEngine = "Spigot or Forks"; }
+            else if ( serverVersionLevel == 2 ) { versionEstimatedRam = 1024; serverEngine = "Spigot or Forks"; }
+            else if ( serverVersionLevel == 3 ) { versionEstimatedRam = 1536; serverEngine = "Spigot or Forks"; }
+            else if ( serverVersionLevel == 4 ) { versionEstimatedRam = 2048; serverEngine = "Paper or Forks"; }
+            else if ( serverVersionLevel == 5 ) { versionEstimatedRam = 3072; serverEngine = "Paper or Forks"; }
 
             //plugins ram
             if (pluginLevel == 0) { pluginsEstimatedRam = 768; }
@@ -97,7 +100,7 @@ namespace mcramcalc
 
             //players ram
             if (playerLevel == 0) { playerEstimatedRam = 768; }
-            if (playerLevel == 1) { playerEstimatedRam = 1280; }
+            if (playerLevel == 1) { playerEstimatedRam = 1536; }
             if (playerLevel == 2) { playerEstimatedRam = 2048; }
             if (playerLevel == 3) { playerEstimatedRam = 3072; }
             if (playerLevel == 4) { playerEstimatedRam = 4096; }
@@ -120,37 +123,47 @@ namespace mcramcalc
 
         void checkVersionLevel()
         {
-            if (versionBox.SelectedIndex == 0 || versionBox.SelectedIndex == 1 || versionBox.SelectedIndex == 2 || versionBox.SelectedIndex == 3)
-            { serverVersionLevel = 0; } // light - craftbukkit
-
-            if (versionBox.SelectedIndex == 4 || versionBox.SelectedIndex == 5)
-            { serverVersionLevel = 1; } // low - spigot
-
-            if (versionBox.SelectedIndex == 6 || versionBox.SelectedIndex == 7)
-            { serverVersionLevel = 2; } // medium - spigot
-            
-            if (versionBox.SelectedIndex == 8)
-            { serverVersionLevel = 3; } // heavy - paper
-            
-            if (versionBox.SelectedIndex == 9 || versionBox.SelectedIndex == 10)
-            { serverVersionLevel = 4; } // heavy - paper
+            switch (versionBox.SelectedIndex)
+            {
+                case 0: serverVersionLevel = 1; break; // 1.8 - light
+                case 1: serverVersionLevel = 2; break; // 1.9 - somewhat medium
+                case 3: serverVersionLevel = 2; break; // 1.10
+                case 4: serverVersionLevel = 2; break; // 1.11
+                case 5: serverVersionLevel = 2; break; // 1.12
+                case 6: serverVersionLevel = 3; break; // 1.13 - medium
+                case 7: serverVersionLevel = 3; break; // 1.14
+                case 8: serverVersionLevel = 3; break; // 1.15
+                case 9: serverVersionLevel = 4; break; // 1.16 - light heavy
+                case 10: serverVersionLevel = 4; break; // 1.17
+                case 11: serverVersionLevel = 5; break; // 1.18 - heavy 
+                case 12: serverVersionLevel = 5; break; // 1.19
+                default:
+                    // something went wrong lol
+                    serverVersionLevel = 0;
+                    break;
+            }
         }
 
         void pluginLevelCheck()
         {
-            if (pluginsBox.SelectedIndex == 0) { pluginLevel = 0; } // 768MB
-            if (pluginsBox.SelectedIndex == 1) { pluginLevel = 1; } // 1024MB
-            if (pluginsBox.SelectedIndex == 2) { pluginLevel = 2; } // 2048MB
+            switch (pluginsBox.SelectedIndex)
+            {
+                case 0: pluginLevel = 1; break; // 768
+                case 2: pluginLevel = 2; break; // 1024
+                case 3: pluginLevel = 3; break; // 1536
+            }
         }
 
         void playerLevelCheck()
         {
-            if (playersBox.SelectedIndex == 0) { playerLevel = 0; } //768MB
-            if (playersBox.SelectedIndex == 1) { playerLevel = 1; } //1280MB
-            if (playersBox.SelectedIndex == 2) { playerLevel = 2; } //2GB
-            if (playersBox.SelectedIndex == 3) { playerLevel = 3; } //3GB
-            if (playersBox.SelectedIndex == 4) { playerLevel = 4; } //5GB
-            if (playersBox.SelectedIndex == 5) { playerLevel = 4; } //6GB
+            switch (playersBox.SelectedIndex)
+            {
+                case 0: playerLevel = 0; break;
+                case 1: playerLevel = 1; break;
+                case 3: playerLevel = 2; break;
+                case 4: playerLevel = 3; break;
+                case 5: playerLevel = 4; break;
+            }
         }
 
         void checkOther()
@@ -158,6 +171,13 @@ namespace mcramcalc
             if (isCracked.Checked == true) { usesBungee = true; }
             if (isWorldPregenerated.Checked == true) { worldPregen = true; }
             if (isWorldSmall.Checked == true) { worldSmall = true; }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            this.Hide();
+            MessageBox.Show("Disclaimer: This is only a suggestion. \nDo not trust this tool, i will not cover any damage or anything");
+            this.Show();
         }
     }
 }
