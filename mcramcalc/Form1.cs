@@ -26,7 +26,7 @@ namespace mcramcalc
         private bool worldSmall;
         private bool worldPregen;
 
-        private void calculate_Click(object sender, EventArgs e)
+        private void calculate_button(object sender, EventArgs e)
         {
             if (serverRamBox.Text == "" || versionBox.SelectedIndex < -1 || pluginsBox.SelectedIndex < -1 || playersBox.SelectedIndex < -1) { MessageBox.Show("complete the form before calculating.");  return; }
             serverRam = Int32.Parse(serverRamBox.Text);
@@ -159,6 +159,5 @@ namespace mcramcalc
             if (isWorldPregenerated.Checked == true) { worldPregen = true; }
             if (isWorldSmall.Checked == true) { worldSmall = true; }
         }
-
     }
 }

@@ -38,11 +38,11 @@
             this.versionBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.doit = new System.Windows.Forms.Button();
+            this.ymlGen = new System.Windows.Forms.Button();
             this.isWorldPregenerated = new System.Windows.Forms.CheckBox();
             this.isWorldSmall = new System.Windows.Forms.CheckBox();
-            this.genSettingsQ = new System.Windows.Forms.CheckBox();
             this.isCracked = new System.Windows.Forms.CheckBox();
-            this.calculate = new System.Windows.Forms.Button();
             this.worldPregenQ = new System.Windows.Forms.CheckBox();
             this.optimizedSettingsLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
@@ -164,15 +164,35 @@
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.doit);
+            this.panel2.Controls.Add(this.ymlGen);
             this.panel2.Controls.Add(this.isWorldPregenerated);
             this.panel2.Controls.Add(this.isWorldSmall);
-            this.panel2.Controls.Add(this.genSettingsQ);
             this.panel2.Controls.Add(this.isCracked);
-            this.panel2.Controls.Add(this.calculate);
             this.panel2.Location = new System.Drawing.Point(584, 12);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(204, 174);
             this.panel2.TabIndex = 1;
+            // 
+            // doit
+            // 
+            this.doit.Location = new System.Drawing.Point(14, 141);
+            this.doit.Name = "doit";
+            this.doit.Size = new System.Drawing.Size(175, 23);
+            this.doit.TabIndex = 14;
+            this.doit.Text = "Do it!";
+            this.doit.UseVisualStyleBackColor = true;
+            this.doit.Click += new System.EventHandler(this.calculate_button);
+            // 
+            // ymlGen
+            // 
+            this.ymlGen.Enabled = false;
+            this.ymlGen.Location = new System.Drawing.Point(14, 112);
+            this.ymlGen.Name = "ymlGen";
+            this.ymlGen.Size = new System.Drawing.Size(175, 23);
+            this.ymlGen.TabIndex = 13;
+            this.ymlGen.Text = "YML Settings Generator";
+            this.ymlGen.UseVisualStyleBackColor = true;
             // 
             // isWorldPregenerated
             // 
@@ -194,17 +214,6 @@
             this.isWorldSmall.Text = "is World 5GB+";
             this.isWorldSmall.UseVisualStyleBackColor = true;
             // 
-            // genSettingsQ
-            // 
-            this.genSettingsQ.AutoSize = true;
-            this.genSettingsQ.Enabled = false;
-            this.genSettingsQ.Location = new System.Drawing.Point(14, 116);
-            this.genSettingsQ.Name = "genSettingsQ";
-            this.genSettingsQ.Size = new System.Drawing.Size(178, 19);
-            this.genSettingsQ.TabIndex = 3;
-            this.genSettingsQ.Text = "Generate optimized settings?";
-            this.genSettingsQ.UseVisualStyleBackColor = true;
-            // 
             // isCracked
             // 
             this.isCracked.AutoSize = true;
@@ -214,17 +223,6 @@
             this.isCracked.TabIndex = 1;
             this.isCracked.Text = "is Cracked? (waterfall)";
             this.isCracked.UseVisualStyleBackColor = true;
-            // 
-            // calculate
-            // 
-            this.calculate.BackColor = System.Drawing.Color.White;
-            this.calculate.Location = new System.Drawing.Point(14, 141);
-            this.calculate.Name = "calculate";
-            this.calculate.Size = new System.Drawing.Size(175, 23);
-            this.calculate.TabIndex = 0;
-            this.calculate.Text = "Calculate!";
-            this.calculate.UseVisualStyleBackColor = false;
-            this.calculate.Click += new System.EventHandler(this.calculate_Click);
             // 
             // worldPregenQ
             // 
@@ -269,11 +267,9 @@
 
         private Panel panel1;
         private Panel panel2;
-        private Button calculate;
         private Label label1;
         private TextBox serverRamBox;
         private ComboBox versionBox;
-        private CheckBox genSettingsQ;
         private CheckBox isCracked;
         private Label label2;
         private Label label5;
@@ -284,5 +280,7 @@
         private CheckBox worldPregenQ;
         private CheckBox isWorldPregenerated;
         private Label optimizedSettingsLabel;
+        private Button doit;
+        private Button ymlGen;
     }
 }
