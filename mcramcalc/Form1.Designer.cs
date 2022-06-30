@@ -146,7 +146,8 @@
             "1.15",
             "1.16",
             "1.17",
-            "1.18"});
+            "1.18",
+            "1.19"});
             this.versionBox.Location = new System.Drawing.Point(123, 12);
             this.versionBox.Name = "versionBox";
             this.versionBox.Size = new System.Drawing.Size(121, 23);
